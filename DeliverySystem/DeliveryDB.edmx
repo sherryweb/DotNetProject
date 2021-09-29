@@ -1,0 +1,390 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DeliverySystemDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="PackageHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PackageId" Type="int" Nullable="false" />
+          <Property Name="ProcCenterId" Type="smallint" Nullable="false" />
+          <Property Name="ProcDate" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Packages">
+          <Key>
+            <PropertyRef Name="PackageId" />
+          </Key>
+          <Property Name="PackageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SenderName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SenderAddress" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="SenderCity" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="SenderProvince" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="SenderZipcode" Type="nvarchar" MaxLength="7" Nullable="false" />
+          <Property Name="SenderPhone" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="RecipientName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RecipientAddress" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="RecipientCity" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="RecipientProvince" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="RecipientZipCode" Type="nvarchar" MaxLength="7" Nullable="false" />
+          <Property Name="RecipientPhone" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="DeliveredImage" Type="varbinary(max)" />
+          <Property Name="Status" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProcCenters">
+          <Key>
+            <PropertyRef Name="ProcCenterId" />
+          </Key>
+          <Property Name="ProcCenterId" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="100" />
+          <Property Name="City" Type="nvarchar" MaxLength="30" />
+          <Property Name="Province" Type="nvarchar" MaxLength="20" />
+          <Property Name="Zipcode" Type="nvarchar" MaxLength="7" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="ScheduledDeliveries">
+          <Key>
+            <PropertyRef Name="ScheduleId" />
+          </Key>
+          <Property Name="ScheduleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PackageId" Type="int" Nullable="false" />
+          <Property Name="StaffId" Type="smallint" Nullable="false" />
+          <Property Name="ScheduledDateTime" Type="datetime" Nullable="false" />
+          <Property Name="ScheduleType" Type="smallint" Nullable="false" />
+          <Property Name="Status" Type="smallint" />
+        </EntityType>
+        <EntityType Name="Staffs">
+          <Key>
+            <PropertyRef Name="StaffId" />
+          </Key>
+          <Property Name="StaffId" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProcCenterId" Type="smallint" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Position" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <Association Name="fk_PackageHistory_Packages">
+          <End Role="Packages" Type="Self.Packages" Multiplicity="1" />
+          <End Role="PackageHistory" Type="Self.PackageHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Packages">
+              <PropertyRef Name="PackageId" />
+            </Principal>
+            <Dependent Role="PackageHistory">
+              <PropertyRef Name="PackageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_PackageHistory_ProcCenters">
+          <End Role="ProcCenters" Type="Self.ProcCenters" Multiplicity="1" />
+          <End Role="PackageHistory" Type="Self.PackageHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProcCenters">
+              <PropertyRef Name="ProcCenterId" />
+            </Principal>
+            <Dependent Role="PackageHistory">
+              <PropertyRef Name="ProcCenterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Staffs_ProcCenters">
+          <End Role="ProcCenters" Type="Self.ProcCenters" Multiplicity="1" />
+          <End Role="Staffs" Type="Self.Staffs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProcCenters">
+              <PropertyRef Name="ProcCenterId" />
+            </Principal>
+            <Dependent Role="Staffs">
+              <PropertyRef Name="ProcCenterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DeliverySystemDBModelStoreContainer">
+          <EntitySet Name="PackageHistory" EntityType="Self.PackageHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Packages" EntityType="Self.Packages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProcCenters" EntityType="Self.ProcCenters" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ScheduledDeliveries" EntityType="Self.ScheduledDeliveries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Staffs" EntityType="Self.Staffs" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_PackageHistory_Packages" Association="Self.fk_PackageHistory_Packages">
+            <End Role="Packages" EntitySet="Packages" />
+            <End Role="PackageHistory" EntitySet="PackageHistory" />
+          </AssociationSet>
+          <AssociationSet Name="fk_PackageHistory_ProcCenters" Association="Self.fk_PackageHistory_ProcCenters">
+            <End Role="ProcCenters" EntitySet="ProcCenters" />
+            <End Role="PackageHistory" EntitySet="PackageHistory" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Staffs_ProcCenters" Association="Self.fk_Staffs_ProcCenters">
+            <End Role="ProcCenters" EntitySet="ProcCenters" />
+            <End Role="Staffs" EntitySet="Staffs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DeliverySystemDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="PackageHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PackageId" Type="Int32" Nullable="false" />
+          <Property Name="ProcCenterId" Type="Int16" Nullable="false" />
+          <Property Name="ProcDate" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Package" Relationship="Self.fk_PackageHistory_Packages" FromRole="PackageHistory" ToRole="Packages" />
+          <NavigationProperty Name="ProcCenter" Relationship="Self.fk_PackageHistory_ProcCenters" FromRole="PackageHistory" ToRole="ProcCenters" />
+        </EntityType>
+        <EntityType Name="Package">
+          <Key>
+            <PropertyRef Name="PackageId" />
+          </Key>
+          <Property Name="PackageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SenderName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SenderAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SenderCity" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SenderProvince" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SenderZipcode" Type="String" MaxLength="7" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SenderPhone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RecipientName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RecipientAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RecipientCity" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RecipientProvince" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RecipientZipCode" Type="String" MaxLength="7" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RecipientPhone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DeliveredImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="PackageHistories" Relationship="Self.fk_PackageHistory_Packages" FromRole="Packages" ToRole="PackageHistory" />
+          <NavigationProperty Name="ScheduledDeliveries" Relationship="Self.fk_ScheduledDeliveries_Packages" FromRole="Packages" ToRole="ScheduledDeliveries" />
+        </EntityType>
+        <EntityType Name="ProcCenter">
+          <Key>
+            <PropertyRef Name="ProcCenterId" />
+          </Key>
+          <Property Name="ProcCenterId" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Province" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Zipcode" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PackageHistories" Relationship="Self.fk_PackageHistory_ProcCenters" FromRole="ProcCenters" ToRole="PackageHistory" />
+          <NavigationProperty Name="Staffs" Relationship="Self.fk_Staffs_ProcCenters" FromRole="ProcCenters" ToRole="Staffs" />
+        </EntityType>
+        <EntityType Name="ScheduledDelivery">
+          <Key>
+            <PropertyRef Name="ScheduleId" />
+          </Key>
+          <Property Name="ScheduleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PackageId" Type="Int32" Nullable="false" />
+          <Property Name="StaffId" Type="Int16" Nullable="false" />
+          <Property Name="ScheduledDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ScheduleType" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="Package" Relationship="Self.fk_ScheduledDeliveries_Packages" FromRole="ScheduledDeliveries" ToRole="Packages" />
+          <NavigationProperty Name="Staff" Relationship="Self.fk_ScheduledDeliveries_Staffs" FromRole="ScheduledDeliveries" ToRole="Staffs" />
+          <Property Name="Status" Type="Int16" />
+        </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="StaffId" />
+          </Key>
+          <Property Name="StaffId" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProcCenterId" Type="Int16" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Position" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ProcCenter" Relationship="Self.fk_Staffs_ProcCenters" FromRole="Staffs" ToRole="ProcCenters" />
+          <NavigationProperty Name="ScheduledDeliveries" Relationship="Self.fk_ScheduledDeliveries_Staffs" FromRole="Staffs" ToRole="ScheduledDeliveries" />
+          <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="fk_PackageHistory_Packages">
+          <End Role="Packages" Type="Self.Package" Multiplicity="1" />
+          <End Role="PackageHistory" Type="Self.PackageHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Packages">
+              <PropertyRef Name="PackageId" />
+            </Principal>
+            <Dependent Role="PackageHistory">
+              <PropertyRef Name="PackageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_PackageHistory_ProcCenters">
+          <End Role="ProcCenters" Type="Self.ProcCenter" Multiplicity="1" />
+          <End Role="PackageHistory" Type="Self.PackageHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProcCenters">
+              <PropertyRef Name="ProcCenterId" />
+            </Principal>
+            <Dependent Role="PackageHistory">
+              <PropertyRef Name="ProcCenterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ScheduledDeliveries_Packages">
+          <End Role="Packages" Type="Self.Package" Multiplicity="1" />
+          <End Role="ScheduledDeliveries" Type="Self.ScheduledDelivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Packages">
+              <PropertyRef Name="PackageId" />
+            </Principal>
+            <Dependent Role="ScheduledDeliveries">
+              <PropertyRef Name="PackageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Staffs_ProcCenters">
+          <End Role="ProcCenters" Type="Self.ProcCenter" Multiplicity="1" />
+          <End Role="Staffs" Type="Self.Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProcCenters">
+              <PropertyRef Name="ProcCenterId" />
+            </Principal>
+            <Dependent Role="Staffs">
+              <PropertyRef Name="ProcCenterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ScheduledDeliveries_Staffs">
+          <End Role="Staffs" Type="Self.Staff" Multiplicity="1" />
+          <End Role="ScheduledDeliveries" Type="Self.ScheduledDelivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staffs">
+              <PropertyRef Name="StaffId" />
+            </Principal>
+            <Dependent Role="ScheduledDeliveries">
+              <PropertyRef Name="StaffId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DeliverySystemDBConnection" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="PackageHistories" EntityType="Self.PackageHistory" />
+          <EntitySet Name="Packages" EntityType="Self.Package" />
+          <EntitySet Name="ProcCenters" EntityType="Self.ProcCenter" />
+          <EntitySet Name="ScheduledDeliveries" EntityType="Self.ScheduledDelivery" />
+          <EntitySet Name="Staffs" EntityType="Self.Staff" />
+          <AssociationSet Name="fk_PackageHistory_Packages" Association="Self.fk_PackageHistory_Packages">
+            <End Role="Packages" EntitySet="Packages" />
+            <End Role="PackageHistory" EntitySet="PackageHistories" />
+          </AssociationSet>
+          <AssociationSet Name="fk_PackageHistory_ProcCenters" Association="Self.fk_PackageHistory_ProcCenters">
+            <End Role="ProcCenters" EntitySet="ProcCenters" />
+            <End Role="PackageHistory" EntitySet="PackageHistories" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ScheduledDeliveries_Packages" Association="Self.fk_ScheduledDeliveries_Packages">
+            <End Role="Packages" EntitySet="Packages" />
+            <End Role="ScheduledDeliveries" EntitySet="ScheduledDeliveries" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Staffs_ProcCenters" Association="Self.fk_Staffs_ProcCenters">
+            <End Role="ProcCenters" EntitySet="ProcCenters" />
+            <End Role="Staffs" EntitySet="Staffs" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ScheduledDeliveries_Staffs" Association="Self.fk_ScheduledDeliveries_Staffs">
+            <End Role="Staffs" EntitySet="Staffs" />
+            <End Role="ScheduledDeliveries" EntitySet="ScheduledDeliveries" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DeliverySystemDBModelStoreContainer" CdmEntityContainer="DeliverySystemDBConnection">
+          <EntitySetMapping Name="PackageHistories">
+            <EntityTypeMapping TypeName="DeliverySystemDBModel.PackageHistory">
+              <MappingFragment StoreEntitySet="PackageHistory">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PackageId" ColumnName="PackageId" />
+                <ScalarProperty Name="ProcCenterId" ColumnName="ProcCenterId" />
+                <ScalarProperty Name="ProcDate" ColumnName="ProcDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Packages">
+            <EntityTypeMapping TypeName="DeliverySystemDBModel.Package">
+              <MappingFragment StoreEntitySet="Packages">
+                <ScalarProperty Name="PackageId" ColumnName="PackageId" />
+                <ScalarProperty Name="SenderName" ColumnName="SenderName" />
+                <ScalarProperty Name="SenderAddress" ColumnName="SenderAddress" />
+                <ScalarProperty Name="SenderCity" ColumnName="SenderCity" />
+                <ScalarProperty Name="SenderProvince" ColumnName="SenderProvince" />
+                <ScalarProperty Name="SenderZipcode" ColumnName="SenderZipcode" />
+                <ScalarProperty Name="SenderPhone" ColumnName="SenderPhone" />
+                <ScalarProperty Name="RecipientName" ColumnName="RecipientName" />
+                <ScalarProperty Name="RecipientAddress" ColumnName="RecipientAddress" />
+                <ScalarProperty Name="RecipientCity" ColumnName="RecipientCity" />
+                <ScalarProperty Name="RecipientProvince" ColumnName="RecipientProvince" />
+                <ScalarProperty Name="RecipientZipCode" ColumnName="RecipientZipCode" />
+                <ScalarProperty Name="RecipientPhone" ColumnName="RecipientPhone" />
+                <ScalarProperty Name="DeliveredImage" ColumnName="DeliveredImage" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProcCenters">
+            <EntityTypeMapping TypeName="DeliverySystemDBModel.ProcCenter">
+              <MappingFragment StoreEntitySet="ProcCenters">
+                <ScalarProperty Name="ProcCenterId" ColumnName="ProcCenterId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
+                <ScalarProperty Name="Zipcode" ColumnName="Zipcode" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ScheduledDeliveries">
+            <EntityTypeMapping TypeName="DeliverySystemDBModel.ScheduledDelivery">
+              <MappingFragment StoreEntitySet="ScheduledDeliveries">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ScheduleId" ColumnName="ScheduleId" />
+                <ScalarProperty Name="PackageId" ColumnName="PackageId" />
+                <ScalarProperty Name="StaffId" ColumnName="StaffId" />
+                <ScalarProperty Name="ScheduledDateTime" ColumnName="ScheduledDateTime" />
+                <ScalarProperty Name="ScheduleType" ColumnName="ScheduleType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Staffs">
+            <EntityTypeMapping TypeName="DeliverySystemDBModel.Staff">
+              <MappingFragment StoreEntitySet="Staffs">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="StaffId" ColumnName="StaffId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ProcCenterId" ColumnName="ProcCenterId" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

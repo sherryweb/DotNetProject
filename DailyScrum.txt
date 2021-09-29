@@ -1,0 +1,356 @@
+
+2020/12/18 JianDong Han
+1. Done / not done since last scrum:
+-  Discuss and Create project plan
+-  Database Design 
+-  Create Sample mockups
+2. To do until next Scrum:
+-  Finish the final remote database configuration, share the information with teammates
+-  Finalize the Database design
+-  Discuss and finalize the mockup design
+3. Need assistance / figure things out
+
+2020/12/18 Tingting Song
+1. Done since last scrum
+-  Search resources for idea of project
+-  Meeting to discuss ideas and function
+-  ppt for proposal, another delivery manage system idea
+2. Plan until next Scrum
+-  Function  for projects
+-  Make plan for every week
+3. Need assistance / figure things out
+
+2020/12/21 JianDong Han
+1. Done / not done since last scrum:
+-  Finish the final remote database configuration, share the information with teammates
+-  Finish the project proposal 
+-  Finalize the BitBucket and Trello environment configuration
+-  Define the project user stories and checklists.
+2. To do until next Scrum:
+-  Update the Database design,Create tables and constraints
+-  Create and configure ADO data model in Programs.
+-  Implement the mainwindow.xaml painting and the mainwindow.xaml.cs coding    
+3. Need assistance / figure things out
+-  
+
+2020/12/21 Tingting Song
+1. Done / not done since last scrum:
+-  Test Database and bitbucket project connection
+-  Finish the project proposal
+-  Finalize business scenario
+-  Define the project user stories and checklists.
+2. To do until next Scrum:
+-  Implement window of customer and coding
+-  Connect with Database and test
+3. Need assistance / figure things out
+-  
+
+2020/12/22 JianDong Han
+1. Done / not done since last scrum:
+-  Update the Database design,Create tables and constraints
+-  Create and configure ADO data model in Programs.
+-  Implement the mainwindow.xaml painting and the mainwindow.xaml.cs coding    
+2. To do until next Scrum:
+-  Finish the Staff management module
+-  Research the WPF UI interface    
+3. Need assistance / figure things out
+-  
+
+
+2020/12/23 JianDong Han
+1. Done / not done since last scrum:
+-  Implement the Staff management module
+-  Implement the Proc Center management module
+-  Research the WPF UI interface    
+2. To do until next Scrum(2020-12-31):
+-  Continue to implement the Staff management module,adjust the data validation methods
+-  Continue to implement the Proc Center management module
+-  Finish the shipment schedule module(manually control)
+-  Finish the Package picking-up schedule module(automatically)
+-  Finish the Package delivery schedule module(automatically)
+-  Research the WPF UI interface and design UI features in this project 
+-  Research the Print service interface and design print features in this project   
+3. Need assistance / figure things out
+-  peer-testing of all modules
+
+2020/12/23 Tingting Song
+1. Done / not done since last scrum:
+-  Test new system environment
+-  Implement customer windows
+-  Research related company's interface and function for customers
+-  Meeting about task assign and some new functions to achieve
+
+2. To do until next Scrum(2020-12-31)::
+-  Finish Customer functions module
+-  Research localization and installer part
+-  Try to finish some function of courier module
+-  Test peer finished module
+
+3. Need assistance / figure things out
+-  
+
+2020/12/31 JianDong Han
+1. Done / not done since last scrum:
+-  implement the Staff management module,adjust the data validation methods
+-  implement the Proc Center management module
+-  Finish the shipment schedule module(manually control)
+-  Finish the Package picking-up schedule module(automatically)
+-  Finish the Package delivery schedule module(automatically)
+-  Research the WPF UI interface and design UI features in this project 
+-  Research the Print service interface and design print features in this project   
+2. To do until next Scrum(2021-01-06):
+-  Adjust the database structure slightly according to the new detailed design
+-  Finalize the staff and proccenter management module
+-  Finalize the Package delivering、Picking-up and shipment module
+-  Design and implement the Manager dashboard and statistic module
+-  Design and implement the new UI style with MaterialDesign、Livechart and PrintDialog  
+3. Need assistance / figure things out
+-  peer-testing of all modules
+
+2020/12/31 Tingting Song
+1. Done / not done since last scrum:
+-  implement part of Customer window
+-  Test part of finished module
+-  Research installer and localization and try to do the implement
+
+2. To do until next Scrum(2021-01-06):
+-  Implement Customer part after database adjustment
+-  Finaliza tracking and add package window of Customer window
+-  implement Courier window
+-  Test peer finished module
+
+3. Need assistance / figure things out
+-  	
+
+2021/01/06 JianDong Han
+1. Done / not done since last scrum:
+-  Adjust the database structure slightly according to the new detailed design
+-  Finalize the staff and proccenter management module
+-  Finalize the Package delivering、Picking-up and shipment module
+-  Design and implement the Manager dashboard and statistic module
+-  Design and implement the new UI style with MaterialDesign、Livechart and PrintDialog  
+2. To do until next Scrum(2021-01-06):
+-  Continue working on the Manager dashboard implementation
+-  Continue working on the UI implementation
+-  testing teammates' modules
+3. Need assistance / figure things out
+-  peer-testing of all modules
+
+2021/01/06 Tingting Song
+1. Done / not done since last scrum:
+-  Implement Customer tracking and add package window, add tab control
+-  Implement Courier window, add login
+-  Add installer for project
+
+2. To do until next Scrum(2021-01-06):
+-  Finalize Customer window, add print function
+-  Finalize Courier window , fix login 
+-  testing teammates' modules
+
+3. Need assistance / figure things out
+-  peer-testing 
+
+2021/01/08 JianDong Han
+1. Done / not done since last scrum:
+-  Fix some bugs in package shipment module 
+-  Continue working on the Manager dashboard implementation
+-  Continue working on the UI implementation
+-  testing teammates' modules
+2. To do until next Scrum:
+-  Adding a login and Manager information validation dialog
+-  Adjust teammates' dialog UI style 
+-  Continue working on the Manager dashboard implementation
+-  Continue working on the UI implementation
+-  testing teammates' modules
+3. Need assistance / figure things out
+-  peer-testing of all modules
+
+2021/01/08 Tingting Song
+1. Done / not done since last scrum:
+-  Fix bugs in Customer window
+-  Fix bugs in Courier window
+-  testing teammates' modules
+
+2. To do until next Scrum:
+-  Update Customer and Courier window base on modified database
+-  Add print for Customer window
+-  testing teammates' modules
+
+3. Need assistance / figure things out
+-   peer-testing 
+
+
+2021/01/09 JianDong Han
+1. Done / not done since last scrum:
+-  Adding a login and Manager information validation dialog
+-  Adjust teammates' dialog UI style 
+-  Continue working on the Manager dashboard implementation
+-  Continue working on the UI implementation
+-  testing teammates' modules
+2. To do until next Scrum:
+-  Finish the manager login dialog implementation and manager information validation
+-  Finished the FlexPie implementation(Show different Processing center's business volume) in Manager dashboard
+-  Finished the FlexChart implementation(Show different staff's workload) in Manager dashboard
+-  testing teammates' modules  
+3. Need assistance / figure things out
+-  peer-testing of all modules
+
+
+2021/01/09 Tingting Song
+1. Done / not done since last scrum:
+-  Modify courier pick-up window after login
+
+2. To do until next Scrum:
+-  Modify Courier delivery dialog after login
+-  Add new print dialog for Customer
+-  testing teammates' modules  
+
+3. Need assistance / figure things out
+-  peer-testing 
+
+
+2021/01/11 JianDong Han
+1. Done / not done since last scrum:
+-  Finish the manager login dialog implementation and manager information validation
+-  Finished the FlexPie implementation(Show different Processing center's business volume) in Manager dashboard
+-  Finished the FlexChart implementation(Show different staff's workload) in Manager dashboard
+-  testing teammates' modules  
+2. To do until next Scrum:
+-  Fix some bugs in Manager Dashboards
+-  Research the ComponentOne report implementation
+-  testing teammates' modules
+3. Need assistance / figure things out
+-  peer-testing of all modules
+
+2021/01/11 Tingting Song
+1. Done / not done since last scrum:
+-  Modify Courier Delivery Dialog after login
+-  Fix bugs in Courier Pick-up dialog
+-  Add print dialog for Customer 
+-  testing teammates' modules  	
+
+2. To do until next Scrum:
+-  Add save pdf for Customer Shipping window
+-  Fix bugs of Courier Dialog
+-  testing teammates' modules
+
+3. Need assistance / figure things out
+-   peer-testing 
+
+
+
+2021/01/12 JianDong Han
+1. Done / not done since last scrum:
+-  Fix some bugs in Manager Dashboards
+-  Research the ComponentOne report implementation
+-  Ajust some pages' UI Style
+-  testing teammates' modules
+2. To do until next Scrum:
+-  Ajust some validation methods in some pages
+-  Implement the business statistics report in Manager dashboard
+-  peer-testing of all modules 
+3. Need assistance / figure things out
+-  peer-testing of all modules
+
+2021/01/12 Tingting Song
+1. Done / not done since last scrum:
+-  Update Customer Print window
+-  testing teammates' modules
+
+2. To do until next Scrum:
+-  Fix bugs of Courier Dialog
+-  peer-testing of all modules 
+
+3. Need assistance / figure things out
+-  peer-testing 
+
+2021/01/13 JianDong Han
+1. Done / not done since last scrum:
+-  Adjust some validation methods in some pages
+-  Implement the business statistics report in Manager dashboard
+-  peer-testing of all modules 
+2. To do until next Scrum:
+-  Implement the business statistics report in Manager dashboard
+-  peer-testing of all modules 
+3. Need assistance / figure things out
+-  peer-testing of all modules
+
+2021/01/13 Tingting Song
+1. Done / not done since last scrum:
+-  Fix bugs of Courier Dialog
+-  Fix bugs of Customer Dialog
+-  testing teammates' modules
+
+2. To do until next Scrum:
+-  Fix bugs of Courier Dialog
+-  peer-testing of all modules  
+
+3. Need assistance / figure things out
+-  peer-testing 
+
+
+2021/01/14 JianDong Han
+1. Done / not done since last scrum:
+-  Fix some bugs in modules
+-  peer-testing of all modules
+2. To do until next Scrum:
+-  Prepare the UNIT test cases
+-  peer-testing of all modules 
+3. Need assistance / figure things out
+-  peer-testing of all modules
+
+2021/01/14 Tingting Song
+1. Done / not done since last scrum:
+-  Update installer
+-  peer-testing of all modules
+
+2. To do until next Scrum:
+-  Prepare the UNIT test cases
+-  peer-testing of all modules 
+
+3. Need assistance / figure things out
+-  peer-testing 
+
+
+
+2021/01/15 JianDong Han
+1. Done / not done since last scrum:
+-  Fix some bugs in modules
+-  Prepare the UNIT test cases
+-  peer-testing of all modules 
+2. To do until next Scrum:
+-  Prepare the UNIT test cases
+-  peer-testing of all modules 
+3. Need assistance / figure things out
+-  peer-testing of all modules
+
+2021/01/15 Tingting Song
+1. Done / not done since last scrum: 
+-  peer-testing of all modules 
+2. To do until next Scrum:
+-  Prepare the UNIT test cases
+-  Prepare presentation
+-  peer-testing of all modules 
+3. Need assistance / figure things out
+-  peer-testing 
+
+
+2021/01/18 JianDong Han
+1. Done / not done since last scrum:
+-  Prepare the UNIT test cases
+-  peer-testing of all modules 
+2. To do until next Scrum:
+-  Prepare the final submission documents
+-  zip the project source code and upload it. 
+3. Need assistance / figure things out
+-  
+
+2021/01/18 Tingting Song
+1. Done / not done since last scrum: 
+-   
+2. To do until next Scrum:
+-  
+-  
+-   
+3. Need assistance / figure things out
+-   

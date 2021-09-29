@@ -1,0 +1,57 @@
+﻿<Page x:Class="DeliverySystem.CourierDlg.PickupDlg"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DeliverySystem.CourierDlg"
+        mc:Ignorable="d"
+        Title="PickupDlg" Height="450" Width="1080" Foreground="Black">
+    <Grid Margin="0,0,0,-31">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="477*"/>
+            <RowDefinition Height="4*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="202*"/>
+            <ColumnDefinition Width="139*"/>
+            <ColumnDefinition Width="739*"/>
+        </Grid.ColumnDefinitions>
+        <ListView Name="lvPickup" SelectionChanged="lvPickup_SelectionChanged" HorizontalAlignment="Left" Height="320" Margin="26,80,0,0" VerticalAlignment="Top" Width="600" Grid.ColumnSpan="3">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Name" Width="120" DisplayMemberBinding="{Binding SenderName}" />
+                    <GridViewColumn Header="Phone" Width="120" DisplayMemberBinding="{Binding SenderPhone}" />
+                    <GridViewColumn Header="Address" Width="200" DisplayMemberBinding="{Binding SenderAddress}" />
+                    <GridViewColumn Header="Status" Width="100" DisplayMemberBinding="{Binding Status}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label Content="Package Pick-up Tracking System" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="356" FontSize="20" FontWeight="Bold" Grid.Column="2" Height="46">
+            <Label.Effect>
+                <DropShadowEffect/>
+            </Label.Effect>
+        </Label>
+        <Label Content="Package Information:" HorizontalAlignment="Left" Margin="303,63,0,0" VerticalAlignment="Top" Grid.Column="2" Width="130" RenderTransformOrigin="0.439,1.114"/>
+        <Label Content="Status" HorizontalAlignment="Left" Margin="336,311,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.527,1.34" Grid.Column="2" Width="51"/>
+        <Label Content="Sender Address: " HorizontalAlignment="Left" Margin="336,206,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.658,2.442" Grid.Column="2"/>
+        <Label Content="Sender Phone: " HorizontalAlignment="Left" Margin="336,155,0,0" VerticalAlignment="Top" Grid.Column="2" RenderTransformOrigin="0.643,-0.167"/>
+        <Label Content="Sender Name: " HorizontalAlignment="Left" Margin="336,107,0,0" VerticalAlignment="Top" Grid.Column="2" RenderTransformOrigin="0.575,-0.333"/>
+        <Button  Name="btSubmit" Content="Submit" Click="btSubmit_Click"  HorizontalAlignment="Left" Margin="390,368,0,0" VerticalAlignment="Top" Width="268" Grid.Column="2">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <Label Content="Total of picking up package is:" HorizontalAlignment="Left" Margin="26,51,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.304,-1.032" Width="188" Grid.ColumnSpan="2"/>
+        <CheckBox Name="comboReceived" Content="Package Received" Grid.Column="2" HorizontalAlignment="Left" Margin="394,320,0,0" VerticalAlignment="Top" Width="142"  RenderTransformOrigin="0.601,-1.129"/>
+        <Label Content="Sender ZipCode:" HorizontalAlignment="Left" Margin="336,260,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.658,2.442" Grid.Column="2"/>
+        <Label Content="Welcome:" HorizontalAlignment="Left" Margin="394,22,0,0" VerticalAlignment="Top" Grid.Column="2" RenderTransformOrigin="0.575,-0.333" Width="66"/>
+        <Label Name="lblCourier" Content="" HorizontalAlignment="Left" Margin="490,22,0,0" VerticalAlignment="Top" Grid.Column="2" RenderTransformOrigin="0.575,-0.333" Width="168"/>
+        <Label Name="lblPickup" Content="" HorizontalAlignment="Left" Margin="33,53,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.304,-1.032" Width="87" Grid.Column="1"/>
+        <CheckBox  Name="comboFinished" Content="Finished" Grid.Column="2" HorizontalAlignment="Left" Margin="544,320,0,0" VerticalAlignment="Top" Width="123"  RenderTransformOrigin="0.601,-1.129"/>
+        <Label x:Name="lblPhone" Content="" HorizontalAlignment="Left" Margin="438,155,0,0" VerticalAlignment="Top" Grid.Column="2" RenderTransformOrigin="0.575,-0.333" Width="229"/>
+        <Label x:Name="lblName" Content="" HorizontalAlignment="Left" Margin="438,107,0,0" VerticalAlignment="Top" Grid.Column="2" RenderTransformOrigin="0.575,-0.333" Width="240"/>
+        <Label x:Name="lblZipcode" Content="" HorizontalAlignment="Left" Margin="438,260,0,0" VerticalAlignment="Top" Grid.Column="2" RenderTransformOrigin="0.575,-0.333" Width="240"/>
+        <Label x:Name="lblAddress" Content="" HorizontalAlignment="Left" Margin="438,206,0,0" VerticalAlignment="Top" Grid.Column="2" RenderTransformOrigin="0.575,-0.333" Width="240"/>
+
+    </Grid>
+</Page>

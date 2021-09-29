@@ -1,0 +1,27 @@
+diff a/DeliverySystem/Staff_AddUpdate_Dialog.xaml.cs b/DeliverySystem/Staff_AddUpdate_Dialog.xaml.cs	(rejected hunks)
+@@ -14,24 +14,25 @@
+ 
+ namespace DeliverySystem
+ {
+     /// <summary>
+     /// Interaction logic for Staff_AddUpdate_Dialog.xaml
+     /// </summary>
+     public partial class Staff_AddUpdate_Dialog : Window
+     {
+         List<Staff> StaffList = new List<Staff>();
+         public Staff_AddUpdate_Dialog()
+         {
+             InitializeComponent();
++            FetchStaffRecords();
+         }
+         public void ClearInputs()
+         {
+             tbName.Text = "";
+             tbProcCenterId.Text = "";
+             tbPhone.Text = "";
+             tbEmail.Text = "";
+             tbPosition.Text = "";
+             btStaffDelete.IsEnabled = false;
+             btStaffUpdate.IsEnabled = false;
+         }
+ 

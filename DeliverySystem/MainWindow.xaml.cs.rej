@@ -1,0 +1,9 @@
+diff a/DeliverySystem/MainWindow.xaml.cs b/DeliverySystem/MainWindow.xaml.cs	(rejected hunks)
+@@ -20,7 +20,6 @@
+     /// </summary>
+     public partial class MainWindow : Window
+     {
+-        DeliverySystemDBConnection ctx = new DeliverySystemDBConnection();
+         DeliverySystemDBConnection ctx; 
+         public MainWindow()
+         {

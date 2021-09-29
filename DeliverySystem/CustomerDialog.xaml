@@ -1,0 +1,45 @@
+﻿<Window x:Class="DeliverySystem.CustomerDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DeliverySystem"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d" WindowStartupLocation="CenterOwner" Height="550" Width="800" ResizeMode="NoResize" WindowStyle="None">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="499*"/>
+            <ColumnDefinition Width="531*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="183*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Background="#FF5B1CB6" Grid.ColumnSpan="2">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10,0">
+                <Button Name="BtClose" Click="BtClose_Click" Width="50" Height="40" Margin="10,0"  Background="{x:Null}" BorderBrush="{x:Null}">
+                    <materialDesign:PackIcon Kind="Power">
+                        <materialDesign:PackIcon.Effect>
+                            <DropShadowEffect/>
+                        </materialDesign:PackIcon.Effect>
+                    </materialDesign:PackIcon>
+                </Button>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.ColumnSpan="2">
+            <TabControl>
+                <TabItem Header="Shipping" Initialized="TabItem_Initialized">
+                    <Frame Name="ShippingPage" Source="/DeliverySystem;component/CustomerDlg/CustShippingDlg.xaml"/>
+                </TabItem>
+                <TabItem Header="Tracking" Initialized="TabItem_Initialized_1">
+                    <Frame Name="TrackingPage" Source="/DeliverySystem;component/CustomerDlg/CustTrackingDlg.xaml"/>
+                </TabItem>
+                <TabItem Header="Contact" Initialized="TabItem_Initialized_2">
+                    <Frame Name="ContactPage" Source="/DeliverySystem;component/CustomerDlg/Contact.xaml"/>
+                </TabItem>
+            </TabControl>
+        </Grid>
+    </Grid>
+</Window>
